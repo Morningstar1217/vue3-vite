@@ -1,0 +1,71 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.f-l {
+  float: left;
+}
+
+.f-r {
+  float: right;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-center {
+  align-items: center;
+  align-content: center;
+}
+
+.flex-start {
+  align-content: start;
+}
+
+.flex-top {
+  align-items: start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-no-wrap {
+  flex-wrap: nowrap;
+}
+
+.flex-s-b {
+  justify-content: space-between;
+}
+
+.flex-s-a {
+  justify-content: space-around;
+}
+
+.margin-auto {
+  margin: 0 auto !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.font-weight {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.pointer {
+  cursor: pointer;
+}
