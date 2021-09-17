@@ -4,8 +4,9 @@
 
 ### 使用vite初始化项目
 
-``` JavaScript
-//使用npm
+使用npm初始化
+
+```
 npm init @vitejs/app
 ```
 
@@ -53,7 +54,7 @@ export default defineConfig({
 
 首先先将vue-router进行安装。
 
-``` javascript
+```
 npm i vue-router@next -S   
 ```
 
@@ -85,7 +86,7 @@ createApp(App).use(router).mount('#app')
 
 使用npm安装sass
 
-``` javascript
+```
 npm i sass -D
 ```
 
@@ -93,7 +94,7 @@ npm i sass -D
 
 使用npm安装elementui
 
-``` javascript
+```
 npm i element-plus  -S 
 ```
 
@@ -101,15 +102,22 @@ npm i element-plus  -S
 
 这里我们使用的是新建一个plugins文件夹进行引入
 
-``` javascript
+```javascript
 // 新建elementPlus.js文件
-import ElementPlus from 'element-plus'import 'element-plus/dist/index.css'export default (app) => {    app.use(ElementPlus)}
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
+export default (app) => {
+    app.use(ElementPlus)
+}
 ```
 
 接着在main.js中引入
 
-``` javascript
-import ElementPlus from '@/plugins/elementPlus'createApp(App).use(router).use(ElementPlus).mount('#app')
+```javascript
+import ElementPlus from '@/plugins/elementPlus'
+
+createApp(App).use(router).use(ElementPlus).mount('#app')
 ```
 
 ### vue3 深度选择器
@@ -118,23 +126,61 @@ import ElementPlus from '@/plugins/elementPlus'createApp(App).use(router).use(El
 
 正确的使用方式:
 
-``` javascript
-:deep(类名){}
+```scss
+:deep(类名) {
+}
 ```
 
 ### 组件中emit传值
 
 网上虽然搜出了很多的答案，但是还是有点不太清楚，于是自己尝试了都用了用，发现这个方法算是比较友好且易懂的：
 
-``` javascript
-import { defineComponent } from 'vue'export default defineComponent({  props: {    //props传值  },  emits: ['changeMenu'],//定义emit的方法名  setup: (props, context) => {    const methods = {      //子组件事件名      changeMenu: (val) => {        context.emit('changeMenu', val)//传值到父组件      },    }    return { ...methods }  },})
+```javascript
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+    props: {//props传值},  
+        emits: ['changeMenu'],//定义emit的方法名  
+        setup: (props, context) => {
+            const methods = {
+                //子组件事件名      
+                changeMenu: (val) => {
+                    context.emit('changeMenu', val)//传值到父组件     
+                },
+            }
+            return { ...methods }
+        },
+    })
 ```
 
 ### 组件中使用props的值
 
 当我们需要在组件中使用props的值时，例如点击时获取，可以这样写
 
-``` javascript
-import { defineComponent } from 'vue'export default defineComponent({  //必须要提前声名props的类型，不然在setup中获取不到  props: {    isCollapse: {      default: () => false,      type: Boolean,    },    defaultAvatar: {      default: () => '',      type: String,    },  },  emits: ['changeCollapse'],  setup(props, context) {    const methods = {      changeCollapse: () => {        context.emit('changeCollapse', !props.isCollapse)//获取到了props的传值      },    }    return { ...methods }  },})
+```javascript
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+    //必须要提前声名props的类型，不然在setup中获取不到  
+    props: {
+        isCollapse: {
+            default: () => false,
+            type: Boolean,
+        },
+        defaultAvatar: {
+            default: () => '',
+            type: String,
+        },
+    },
+    emits: ['changeCollapse'],
+    setup(props, context) {
+        const methods = {
+            changeCollapse: () => {
+                context.emit('changeCollapse', !props.isCollapse)//获取到了props的传值      
+            },
+        }
+        return { ...methods }
+    },
+})
 ```
 
