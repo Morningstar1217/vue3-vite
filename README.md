@@ -90,9 +90,9 @@ createApp(App).use(router).mount('#app')
 npm i sass -D
 ```
 
-### 引入elementui
+### 引入element plus
 
-使用npm安装elementui
+使用npm安装element plus
 
 ```
 npm i element-plus  -S 
@@ -150,7 +150,8 @@ export default defineComponent({
             }
             return { ...methods }
         },
-    })
+    }
+})
 ```
 
 ### 组件中使用props的值
