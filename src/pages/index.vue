@@ -4,7 +4,7 @@
                :is-collapse="isCollapse"/>
     <div class="content" :class="{closeMenu:isCollapse}">
       <top-menu :is-collapse="isCollapse" :default-avatar="defaultAvatar" @change-collapse="changeCollapse"/>
-      <router-view class="router-content"></router-view>
+      <router-view class="p-t-90 p-l-20 p-r-20 p-b-20"></router-view>
       <page-info :is-collapse="isCollapse"/>
     </div>
   </div>

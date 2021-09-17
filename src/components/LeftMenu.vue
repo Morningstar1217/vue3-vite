@@ -23,7 +23,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  props: {
+props: {
     defaultMenu: {
       default: [],
       type: Array,

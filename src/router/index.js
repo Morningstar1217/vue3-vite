@@ -34,6 +34,11 @@ const router = createRouter({
                     name: 'addShop',
                     component: () => import('@/pages/shopManage/addShop.vue'),
                 },
+                {
+                    path: '/dataBlank',
+                    name: 'dataBlank',
+                    component: () => import('@/pages/shopManage/dataBlank.vue'),
+                },
             ],
         },
     ],
