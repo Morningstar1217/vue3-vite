@@ -26,7 +26,7 @@
             layout="prev, pager, next"
             :total="1000">
         </el-pagination>
-        <el-form class="open-plat-wrap" inline label-width="120px" label-position="right"
+        <el-form class="max-w-1200" inline label-width="120px" label-position="right"
                  v-if="step===2">
           <el-form-item label="商户名称:">
             <el-input size="small" v-model="form.key" class="w-300"></el-input>
@@ -89,7 +89,7 @@
             </el-select>
           </el-form-item>
           <el-form-item label="核销人员:">
-            <el-input size="small" v-model="form.password" class="w-300"></el-input>
+            <el-input size="small" v-model="form.password" class="w-210"></el-input>
             <el-button class="m-l-10" type="primary" size="mini">一键获取</el-button>
           </el-form-item>
           <el-form-item label="代理范围:">
