@@ -127,8 +127,8 @@ createApp(App).use(router).use(ElementPlus).mount('#app')
 正确的使用方式:
 
 ```scss
-:deep(类名) {
-}
+:deep(类名) {}
+::v-deep{}
 ```
 
 ### 组件中emit传值
