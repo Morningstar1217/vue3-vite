@@ -71,22 +71,17 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { ref } from 'vue'
 
-export default defineComponent({
-  data() {
-    return {
-      form: {},
-      url1: 'https://www.apple.com.cn',
-      url2: 'https://www.apple.com.cn',
-      powerAll: '',
-      daili: '',
-      yewu: '',
-      shanghu: '',
-    }
-  },
-})
+const url1 = 'https://www.apple.com.cn',
+    url2 = 'https://www.apple.com.cn'
+
+const form = ref({}),
+    powerAll = ref(''),
+    daili = ref(''),
+    yewu = ref(''),
+    shanghu = ref('')
 </script>
 
 <style scoped>

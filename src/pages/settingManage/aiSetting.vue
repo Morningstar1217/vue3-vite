@@ -20,18 +20,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import FormCom from '@/components/FormCom.vue'
-import { defineComponent } from 'vue'
+import { ref } from 'vue'
 
-export default defineComponent({
-  data() {
-    return {
-      platType: 1,
-    }
-  },
-  components: { FormCom },
-})
+const platType = ref(1)
 </script>
 
 <style scoped lang="scss">
