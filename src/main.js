@@ -4,4 +4,5 @@ import router from './router'
 import ElementPlus from '@/plugins/elementPlus'
 import '@/styles/index.scss'
 
-createApp(App).use(router).use(ElementPlus).mount('#app')
+const app = createApp(App)
+app.use(router).use(ElementPlus).mount('#app')

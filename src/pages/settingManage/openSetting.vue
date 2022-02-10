@@ -1,37 +1,25 @@
 <template>
   <div class="w-450">
-    <FormCom form-title="小程序开放平台"></FormCom>
+    <FormCom :form-title="formTitle" :plat-type="platType"></FormCom>
     <div class="text-center">
-      <el-button type="primary" size="small" class="w-120">保存</el-button>
+      <el-button type="primary" size="small" class="w-120" @click="saveInfo">保存</el-button>
       <el-button type="primary" size="small" class="w-120">下一步</el-button>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import FormCom from '@/components/FormCom.vue'
-import { defineComponent } from 'vue'
+import { ElNotification } from 'element-plus'
 
-export default defineComponent({
-  data() {
-    return {
-      form: {
-        key: '',
-        secret: '',
-        url: '',
-        time: '',
-        timeModel: '',
-      },
-      formTitle: '小程序开放平台',
-      platType: 2,
-    }
-  },
-  setup(props, context) {
-    const methods = {}
-    return { ...methods }
-  },
-  components: { FormCom },
-})
+const formTitle = '小程序开放平台', platType = 2
+
+const saveInfo = () => {
+  ElNotification.success({
+    title: '提示',
+    message: '保存成功',
+  })
+}
 </script>
 
 <style scoped lang="scss">

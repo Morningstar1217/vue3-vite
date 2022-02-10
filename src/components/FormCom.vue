@@ -23,6 +23,21 @@
   </el-form>
 </template>
 
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  platType: {
+    default: 1,
+    type: [Number, String],
+  },
+  formTitle: {
+    default: '',
+    type: String,
+  },
+})
+</script>
+
 <script>
 import { defineComponent } from 'vue'
 
@@ -39,7 +54,7 @@ export default defineComponent({
     }
   },
   props: {
-    platType: Number | String,
+    platType: [Number, String],
     formTitle: String,
   },
 })
