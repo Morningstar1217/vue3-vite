@@ -134,8 +134,8 @@
       </div>
       <div class="h-30 l-h-30 f-s-14">单次充值为10的整数倍</div>
       <div class="text-right m-t-20">
-        <el-button size="small" @click="countDia = false">取 消</el-button>
-        <el-button size="small" type="primary" @click="countDia = false">充值点数</el-button>
+        <el-button size="small" @click="handleCloseCount">取 消</el-button>
+        <el-button size="small" type="primary" @click="handleCloseCount">充值点数</el-button>
       </div>
     </el-dialog>
     <el-dialog title="充值AI点数" v-model="AiDia" width="30%"
@@ -147,8 +147,8 @@
       </div>
       <div class="h-30 l-h-30 f-s-14">单次充值为100的整数倍</div>
       <div class="text-right m-t-20">
-        <el-button size="small" @click="AiDia = false">取 消</el-button>
-        <el-button size="small" type="primary" @click="AiDia = false">充值点数</el-button>
+        <el-button size="small" @click="handleCloseAi">取 消</el-button>
+        <el-button size="small" type="primary" @click="handleCloseAi">充值点数</el-button>
       </div>
     </el-dialog>
     <el-dialog title="商家抖音/快手/视频号" v-model="platTypeDia"
@@ -182,87 +182,75 @@
         </el-form-item>
       </el-form>
       <div class="text-right m-t-20">
-        <el-button size="small" @click="platTypeDia = false">取消</el-button>
-        <el-button size="small" type="primary" @click="platTypeDia = false">保存</el-button>
+        <el-button size="small" @click="handleClosePlat">取消</el-button>
+        <el-button size="small" type="primary" @click="handleClosePlat">保存</el-button>
       </div>
     </el-dialog>
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { ref } from 'vue'
 
-export default defineComponent({
-  data() {
-    return {
-      shopType: '',
-      options: [
-        {
-          value: '选项1',
-          label: '黄金糕',
-        },
-      ],
-      shopName: '',
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        phone: '13111112222',
-        count: 11,
-        status: true,
-        aiCount: 1000,
-        ai: true,
-        shop: true,
-        activity: true,
-        card: true,
-        gift: true,
-        disableShop: true,
-      }],
-      permissonDia: false,
-      permissonList: [],
-      countDia: false,
-      countInp: '',
-      chooseShop: {},
-      AiDia: false,
-      aiInp: '',
-      platTypeDia: false,
-      platType: '抖音',
-      form: {},
-    }
-  },
-  methods: {
-    handleClose() {
-      this.permissonDia = false
+const countDia = ref(false),
+    shopType = ref(''),
+    options = ref([
+      {
+        value: '选项1',
+        label: '黄金糕',
+      },
+    ]),
+    shopName = ref(''),
+    tableData = ref([{
+      date: '2016-05-02',
+      name: '王小虎',
+      phone: '13111112222',
+      count: 11,
+      status: true,
+      aiCount: 1000,
+      ai: true,
+      shop: true,
+      activity: true,
+      card: true,
+      gift: true,
+      disableShop: true,
+    }]),
+    permissonList = ref([]),
+    countInp = ref(''),
+    chooseShop = ref({}),
+    AiDia = ref(false),
+    aiInp = ref(''),
+    platTypeDia = ref(false),
+    platType = ref('抖音'),
+    form = ref({})
+
+const handleCloseCount = () => {
+      chooseShop.value = {}
+      countInp.value = ''
+      countDia.value = false
     },
-    handleCloseCount() {
-      this.chooseShop = {}
-      this.countInp = ''
-      this.countDia = false
+    handleCloseAi = () => {
+      chooseShop.value = {}
+      aiInp.value = ''
+      AiDia.value = false
     },
-    handleCloseAi() {
-      this.chooseShop = {}
-      this.aiInp = ''
-      this.AiDia = false
+    handleClosePlat = () => {
+      platTypeDia.value = false
     },
-    handleClosePlat() {
-      this.platTypeDia = false
-    },
-    clickMenu(val, item) {
-      this.chooseShop = item
-      console.log(val)
+    clickMenu = (val, item) => {
+      chooseShop.value = item
       switch (val) {
         case 'addAI':
-          this.AiDia = true
+          AiDia.value = true
           break
         case 'addCount':
-          this.countDia = true
+          countDia.value = true
           break
         case 'platType':
-          this.platTypeDia = true
+          platTypeDia.value = true
           break
       }
-    },
-  },
-})
+    }
 </script>
 
 <style scoped>
